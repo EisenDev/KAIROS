@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   KAIROS PRO v3.5 — Aesthetic Minimalist Design System
+   Clean · Modern · Premium
+   ============================================================ */
+
+@theme {
+  /* ─── Surface Palette ─────────────────────────────────── */
+  --color-void: #08080c;
+  --color-abyss: #0c0c12;
+  --color-obsidian: #101018;
+  --color-slate-deep: #16161f;
+  --color-slate-mid: #1e1e2a;
+
+  /* ─── Accent Palette (refined, less saturated) ─────── */
+  --color-neon-cyan: #38bdf8;
+  --color-neon-green: #34d399;
+  --color-neon-red: #f87171;
+  --color-neon-amber: #fbbf24;
+  --color-neon-purple: #a78bfa;
+  --color-neon-blue: #60a5fa;
+
+  /* ─── Signal Colors ────────────────────────────────────── */
+  --color-execute: #34d399;
+  --color-caution: #fbbf24;
+  --color-hold: #64748b;
+
+  /* ─── Typography Colors ────────────────────────────────── */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #475569;
+
+  /* ─── Glow (subtle) ────────────────────────────────────── */
+  --color-glow-cyan: rgba(56, 189, 248, 0.08);
+  --color-glow-green: rgba(52, 211, 153, 0.08);
+  --color-glow-red: rgba(248, 113, 113, 0.08);
+
+  /* ─── Borders ──────────────────────────────────────────── */
+  --color-border: rgba(148, 163, 184, 0.06);
+  --color-border-hover: rgba(148, 163, 184, 0.12);
+  --color-border-accent: rgba(56, 189, 248, 0.15);
+
+  /* ─── Typography ───────────────────────────────────────── */
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base Layer ──────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* ─── Scrollbar (thin, minimal) ──────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-mid);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ─── Animations (subtle) ────────────────────────────────── */
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes signal-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.3); }
+  70% { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Glass Panel (the core component) ───────────────────── */
+
+.glass-panel {
+  background: rgba(16, 16, 24, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--color-border-hover);
+}
+
+/* ─── Typography Utilities ───────────────────────────────── */
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+}
+
+.value-lg {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.value-sm {
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Neon Text (dimmed glows for minimalism) ────────────── */
+
+.neon-text-cyan {
+  color: var(--color-neon-cyan);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+}
+
+.neon-text-green {
+  color: var(--color-neon-green);
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.2);
+}
+
+.neon-text-red {
+  color: var(--color-neon-red);
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.2);
+}
+
+.neon-text-amber {
+  color: var(--color-neon-amber);
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.2);
+}
+
+/* ─── Animation Utilities ────────────────────────────────── */
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-signal-pulse {
+  animation: signal-pulse 2s infinite;
+}
+
+/* ─── Subtle Grid Background ─────────────────────────────── */
+
+.grid-bg {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+    linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* ─── Scan Overlay (very subtle) ─────────────────────────── */
+
+.scan-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.04), transparent);
+  animation: scan-down 12s linear infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+@keyframes scan-down {
+  0% { top: -2px; }
+  100% { top: 100vh; }
+}
+
+/* ─── Button Styles ──────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-border-accent);
+  background: rgba(56, 189, 248, 0.06);
+  color: var(--color-neon-cyan);
+}
+
+.btn-primary:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.06);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Status Dot ─────────────────────────────────────────── */
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot--online { background: var(--color-neon-green); box-shadow: 0 0 6px rgba(52, 211, 153, 0.4); }
+.status-dot--offline { background: var(--color-neon-red); }
+.status-dot--pulse { animation: pulse-glow 1.5s ease-in-out infinite; }

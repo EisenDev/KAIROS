@@ -1,0 +1,15 @@
+{
+  "name": "kairos-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KAIROS PRO - Stochastic Trade Orchestrator",
+  "scripts": {
+    "dev:hub": "cd hub && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev:brain": "cd brain && python -m uvicorn main:app --reload --port 8400",
+    "dev": "concurrently \"npm run dev:hub\" \"npm run dev:client\" \"npm run dev:brain\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
